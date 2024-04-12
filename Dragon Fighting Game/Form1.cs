@@ -21,5 +21,15 @@ namespace Dragon_Fighting_Game
         {
 
         }
+
+        private void txtPlayer2Name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDragon2Name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
