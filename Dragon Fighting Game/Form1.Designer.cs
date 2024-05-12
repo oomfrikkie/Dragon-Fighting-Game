@@ -225,6 +225,7 @@
             this.btnStart.TabIndex = 7;
             this.btnStart.Text = "START GAME";
             this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // gbx3
             // 
