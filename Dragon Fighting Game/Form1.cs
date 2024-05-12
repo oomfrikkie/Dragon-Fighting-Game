@@ -13,6 +13,7 @@ namespace Dragon_Fighting_Game
 {
     public partial class Form1 : Form
     {
+        private const bool V = false; //changed bool format
         String[] p1Data = new string[3];
         String[] p2Data = new string[3];
         int[] p1Values = new int[4];
@@ -54,20 +55,20 @@ namespace Dragon_Fighting_Game
         public Form1()
         {
             InitializeComponent();
-            btnStart.Enabled = false;   
-            
-
+            btnStart.Enabled = V; //Changed bool format
         }
 
+        //Save button for player1
         private void btnSave1_Click(object sender, EventArgs e)
         {
             SaveValues1();
-            
+
 
 
 
         }
 
+        //Fire dragon changes
         private void radFire1_CheckedChanged(object sender, EventArgs e)
         {
             p1Data[2] = Fire_Dragon_Name;
@@ -75,54 +76,67 @@ namespace Dragon_Fighting_Game
 
         }
 
+        //Ice dragon changes
         private void radIce1_CheckedChanged(object sender, EventArgs e)
         {
             p1Data[2] = Ice_Dragon_Name;
             p1Values = new int[] { Ice_Dragon_Health, Ice_Dragon_Atk, Ice_Dragon_Block, Ice_Dragon_SAtk };
         }
 
+        //Wind dragon changes
         private void radWind1_CheckedChanged(object sender, EventArgs e)
         {
             p1Data[2] = Wind_Dragon_Name;
             p1Values = new int[] { Wind_Dragon_Health, Wind_Dragon_Atk, Wind_Dragon_Block, Wind_Dragon_SAtk };
         }
 
+        //Earth dragon changes
         private void radEarth1_CheckedChanged(object sender, EventArgs e)
         {
             p1Data[2] = Earth_Dragon_Name;
             p1Values = new int[] { Earth_Dragon_Health, Earth_Dragon_Atk, Earth_Dragon_Block, Earth_Dragon_SAtk };
         }
 
+        //Save button for player2
         private void btnSave2_Click(object sender, EventArgs e)
+
         {
             SaveValues2();
-            
+
+
+
+
         }
 
-        private void radFire2_CheckedChanged(object sender, EventArgs e)
+    //Fire dragon changes
+    private void radFire2_CheckedChanged(object sender, EventArgs e)
         {
             p2Data[2] = Fire_Dragon_Name;
             p2Values = new int[] { Fire_Dragon_Health, Fire_Dragon_Atk, Fire_Dragon_Block, Fire_Dragon_SAtk };
         }
 
+        //Ice dragon changes
         private void radIce2_CheckedChanged(object sender, EventArgs e)
         {
             p2Data[2] = Ice_Dragon_Name;
             p2Values = new int[] { Ice_Dragon_Health, Ice_Dragon_Atk, Ice_Dragon_Block, Ice_Dragon_SAtk };
         }
 
+        //Wind dragon changes
         private void radWind2_CheckedChanged(object sender, EventArgs e)
         {
             p2Data[2] = Wind_Dragon_Name;
             p2Values = new int[] { Wind_Dragon_Health, Wind_Dragon_Atk, Wind_Dragon_Block, Wind_Dragon_SAtk };
         }
 
+        //Earth dragon changes
         private void radEarth2_CheckedChanged(object sender, EventArgs e)
         {
             p2Data[2] = Earth_Dragon_Name;
             p2Values = new int[] { Earth_Dragon_Health, Earth_Dragon_Atk, Earth_Dragon_Block, Earth_Dragon_SAtk };
         }
 
+        //Start button to start the game
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (player1Saved && player2Saved)
@@ -140,6 +154,7 @@ namespace Dragon_Fighting_Game
             btnStart.Enabled = player1Saved && player2Saved;
         }
 
+        //Dragon selection and name giving
         private void SaveValues1()
         {
             string player1Name = txtPlayer1Name.Text;
@@ -163,6 +178,7 @@ namespace Dragon_Fighting_Game
 
         }
 
+        // typo correction
         private void SaveValues2()
         {
             string player2Name = txtPlayer2Name.Text; // Fixed typo: Changed txtPlayer1Name to txtPlayer2Name

@@ -55,6 +55,7 @@
             this.btnRest.TabIndex = 9;
             this.btnRest.Text = "Rest";
             this.btnRest.UseVisualStyleBackColor = true;
+            this.btnRest.Click += new System.EventHandler(this.btnRest_Click);
             // 
             // gbx6
             // 

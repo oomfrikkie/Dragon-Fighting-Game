@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Dragon_Fighting_Game
 {
+
+    //player block button
     public partial class Form2 : Form
     {
         string[] p1Data2;
@@ -21,7 +23,7 @@ namespace Dragon_Fighting_Game
         bool player2Blocking = false;
         int currentPlayer = 0;
 
-
+        //bro wtf is this
         public Form2(string[] p1Data, string[] p2Data, int[] p1Values, int[] p2Values)
         {
 
@@ -35,11 +37,13 @@ namespace Dragon_Fighting_Game
 
         }
 
+        //loading form 2
         private void Form2_Load(object sender, EventArgs e)
         {
 
         }
 
+          //player dragon hp
         private void lblDragonHp2_Click(object sender, EventArgs e)
         {
 
@@ -120,7 +124,7 @@ namespace Dragon_Fighting_Game
             }
         }
 
-
+        //attack 
         private void btnAtk_Click(object sender, EventArgs e)
         {
             Attack();
@@ -128,7 +132,7 @@ namespace Dragon_Fighting_Game
 
         private void CheckDefeated()
         {
-            if (p1Values2[0] == 0)
+            if (p1Values2[0] == 0)//whats with the "-----"?
             {
                 rtbBattleLog.Text = ("\n Player 1 Has been defeat . \n Player 2 Wins!!!! \n -------------------------------------------------------");
             }
@@ -136,6 +140,12 @@ namespace Dragon_Fighting_Game
             {
                 rtbBattleLog.Text = ("\n Player 2 Has been defeat . \n Player 1 Wins!!!! \n -------------------------------------------------------");
             }
+        }
+
+        //rest button
+        private void btnRest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
