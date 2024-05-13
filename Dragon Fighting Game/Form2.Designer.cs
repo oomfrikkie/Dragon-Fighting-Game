@@ -31,7 +31,6 @@
             this.btnRest = new System.Windows.Forms.Button();
             this.gbx6 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblDragonHp2 = new System.Windows.Forms.Label();
             this.gbx7 = new System.Windows.Forms.GroupBox();
             this.rtbBattleLog = new System.Windows.Forms.RichTextBox();
             this.gbx5 = new System.Windows.Forms.GroupBox();
@@ -61,7 +60,6 @@
             // 
             this.gbx6.BackColor = System.Drawing.Color.Transparent;
             this.gbx6.Controls.Add(this.label1);
-            this.gbx6.Controls.Add(this.lblDragonHp2);
             this.gbx6.Font = new System.Drawing.Font("Goudy Stout", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gbx6.Location = new System.Drawing.Point(331, 28);
@@ -82,22 +80,9 @@
             this.label1.Location = new System.Drawing.Point(4, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 19);
+            this.label1.Size = new System.Drawing.Size(37, 19);
             this.label1.TabIndex = 7;
-            this.label1.Text = "X, the X dragon";
-            // 
-            // lblDragonHp2
-            // 
-            this.lblDragonHp2.AutoSize = true;
-            this.lblDragonHp2.BackColor = System.Drawing.Color.Black;
-            this.lblDragonHp2.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDragonHp2.ForeColor = System.Drawing.Color.DarkViolet;
-            this.lblDragonHp2.Location = new System.Drawing.Point(4, 65);
-            this.lblDragonHp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDragonHp2.Name = "lblDragonHp2";
-            this.lblDragonHp2.Size = new System.Drawing.Size(46, 19);
-            this.lblDragonHp2.TabIndex = 6;
-            this.lblDragonHp2.Text = "HP: X";
+            this.label1.Text = "HP: ";
             // 
             // gbx7
             // 
@@ -117,6 +102,7 @@
             // rtbBattleLog
             // 
             this.rtbBattleLog.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.rtbBattleLog.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbBattleLog.Location = new System.Drawing.Point(4, 17);
             this.rtbBattleLog.Margin = new System.Windows.Forms.Padding(2);
             this.rtbBattleLog.Name = "rtbBattleLog";
@@ -232,7 +218,6 @@
         private System.Windows.Forms.Button btnRest;
         private System.Windows.Forms.GroupBox gbx6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblDragonHp2;
         private System.Windows.Forms.GroupBox gbx7;
         private System.Windows.Forms.RichTextBox rtbBattleLog;
         private System.Windows.Forms.GroupBox gbx5;
