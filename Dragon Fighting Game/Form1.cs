@@ -55,21 +55,19 @@ namespace Dragon_Fighting_Game
         public Form1()
         {
             InitializeComponent();
-            btnStart.Enabled = false;   
-            
-
+            btnStart.Enabled = V; //Changed bool format
         }
 
         private void btnSave1_Click(object sender, EventArgs e) // save data for player 1
         {
             SaveValues1();
-            
+
 
 
 
         }
 
-        private void radFire1_CheckedChanged(object sender, EventArgs e) // Set dragon data for Player 1 based on selection
+        private void radFire1_CheckedChanged(object sender, EventArgs e)
         {
             p1Data[2] = Fire_Dragon_Name;
             p1Values = new int[] { Fire_Dragon_Health, Fire_Dragon_Atk, Fire_Dragon_Block, Fire_Dragon_SAtk };
@@ -95,12 +93,16 @@ namespace Dragon_Fighting_Game
         }
 
         private void btnSave2_Click(object sender, EventArgs e) //Saves the selections done by player 2
+
         {
             SaveValues2();
-            
+
+
+
+
         }
 
-        private void radFire2_CheckedChanged(object sender, EventArgs e)// Set dragon data for Player 2 based on selection
+        private void radFire2_CheckedChanged(object sender, EventArgs e)
         {
             p2Data[2] = Fire_Dragon_Name;
             p2Values = new int[] { Fire_Dragon_Health, Fire_Dragon_Atk, Fire_Dragon_Block, Fire_Dragon_SAtk };
@@ -124,6 +126,7 @@ namespace Dragon_Fighting_Game
             p2Values = new int[] { Earth_Dragon_Health, Earth_Dragon_Atk, Earth_Dragon_Block, Earth_Dragon_SAtk };
         }
 
+        //Start button to start the game
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (player1Saved && player2Saved)

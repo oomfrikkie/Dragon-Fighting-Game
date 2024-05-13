@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Dragon_Fighting_Game
 {
+
+    //player block button
     public partial class Form2 : Form
     {
        //declaring the crucial variables
@@ -40,6 +42,7 @@ namespace Dragon_Fighting_Game
             
         }
 
+        //loading form 2
         private void Form2_Load(object sender, EventArgs e)
         {
           TakeInitiative();
