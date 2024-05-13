@@ -55,7 +55,7 @@ namespace Dragon_Fighting_Game
         public Form1()
         {
             InitializeComponent();
-            btnStart.Enabled = V; //Changed bool format
+            btnStart.Enabled = false; //Changed bool format
         }
 
         private void btnSave1_Click(object sender, EventArgs e) // save data for player 1
@@ -127,7 +127,7 @@ namespace Dragon_Fighting_Game
         }
 
         //Start button to start the game
-        private void btnStart_Click(object sender, EventArgs e)
+        private void btnStart_Click(object sender, EventArgs e) 
         {
             if (player1Saved && player2Saved)
             {

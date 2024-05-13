@@ -55,7 +55,6 @@
             this.btnRest.TabIndex = 9;
             this.btnRest.Text = "Rest";
             this.btnRest.UseVisualStyleBackColor = true;
-            this.btnRest.Click += new System.EventHandler(this.btnRest_Click);
             // 
             // gbx6
             // 
@@ -103,7 +102,7 @@
             // rtbBattleLog
             // 
             this.rtbBattleLog.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.rtbBattleLog.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbBattleLog.Font = new System.Drawing.Font("Impact", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbBattleLog.Location = new System.Drawing.Point(4, 17);
             this.rtbBattleLog.Margin = new System.Windows.Forms.Padding(2);
             this.rtbBattleLog.Name = "rtbBattleLog";

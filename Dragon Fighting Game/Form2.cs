@@ -157,7 +157,7 @@ namespace Dragon_Fighting_Game
                     player1Blocking = false;
                     damage = p2Values2[1] - p1Values2[2];// working out damage subtracted by the block
                     p2Values2[0] -= Math.Abs(damage);
-                    rtbBattleLog.Text += "\n" + p2Data2[1] + " attacked but"+ p1Data2[1] + "blocked" + damage + "  damage was done ";
+                    rtbBattleLog.Text += "\n" + p2Data2[1] + " attacked but"+ p1Data2[1] + " blocked " + damage + "  damage was done ";
 
                 }
                 else
