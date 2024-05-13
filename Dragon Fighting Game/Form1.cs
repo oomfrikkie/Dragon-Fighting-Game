@@ -13,6 +13,7 @@ namespace Dragon_Fighting_Game
 {
     public partial class Form1 : Form
     {
+        //delcaring the necessary variables
         String[] p1Data = new string[3];
         String[] p2Data = new string[3];
         int[] p1Values = new int[4];
@@ -59,7 +60,7 @@ namespace Dragon_Fighting_Game
 
         }
 
-        private void btnSave1_Click(object sender, EventArgs e)
+        private void btnSave1_Click(object sender, EventArgs e) // save data for player 1
         {
             SaveValues1();
             
@@ -68,56 +69,56 @@ namespace Dragon_Fighting_Game
 
         }
 
-        private void radFire1_CheckedChanged(object sender, EventArgs e)
+        private void radFire1_CheckedChanged(object sender, EventArgs e) // Set dragon data for Player 1 based on selection
         {
             p1Data[2] = Fire_Dragon_Name;
             p1Values = new int[] { Fire_Dragon_Health, Fire_Dragon_Atk, Fire_Dragon_Block, Fire_Dragon_SAtk };
 
         }
 
-        private void radIce1_CheckedChanged(object sender, EventArgs e)
+        private void radIce1_CheckedChanged(object sender, EventArgs e)// Set dragon data for Player 1 based on selection
         {
             p1Data[2] = Ice_Dragon_Name;
             p1Values = new int[] { Ice_Dragon_Health, Ice_Dragon_Atk, Ice_Dragon_Block, Ice_Dragon_SAtk };
         }
 
-        private void radWind1_CheckedChanged(object sender, EventArgs e)
+        private void radWind1_CheckedChanged(object sender, EventArgs e)// Set dragon data for Player 1 based on selection
         {
             p1Data[2] = Wind_Dragon_Name;
             p1Values = new int[] { Wind_Dragon_Health, Wind_Dragon_Atk, Wind_Dragon_Block, Wind_Dragon_SAtk };
         }
 
-        private void radEarth1_CheckedChanged(object sender, EventArgs e)
+        private void radEarth1_CheckedChanged(object sender, EventArgs e)// Set dragon data for Player 1 based on selection
         {
             p1Data[2] = Earth_Dragon_Name;
             p1Values = new int[] { Earth_Dragon_Health, Earth_Dragon_Atk, Earth_Dragon_Block, Earth_Dragon_SAtk };
         }
 
-        private void btnSave2_Click(object sender, EventArgs e)
+        private void btnSave2_Click(object sender, EventArgs e) //Saves the selections done by player 2
         {
             SaveValues2();
             
         }
 
-        private void radFire2_CheckedChanged(object sender, EventArgs e)
+        private void radFire2_CheckedChanged(object sender, EventArgs e)// Set dragon data for Player 2 based on selection
         {
             p2Data[2] = Fire_Dragon_Name;
             p2Values = new int[] { Fire_Dragon_Health, Fire_Dragon_Atk, Fire_Dragon_Block, Fire_Dragon_SAtk };
         }
 
-        private void radIce2_CheckedChanged(object sender, EventArgs e)
+        private void radIce2_CheckedChanged(object sender, EventArgs e)// Set dragon data for Player 2 based on selection
         {
             p2Data[2] = Ice_Dragon_Name;
             p2Values = new int[] { Ice_Dragon_Health, Ice_Dragon_Atk, Ice_Dragon_Block, Ice_Dragon_SAtk };
         }
 
-        private void radWind2_CheckedChanged(object sender, EventArgs e)
+        private void radWind2_CheckedChanged(object sender, EventArgs e)// Set dragon data for Player 2 based on selection
         {
             p2Data[2] = Wind_Dragon_Name;
             p2Values = new int[] { Wind_Dragon_Health, Wind_Dragon_Atk, Wind_Dragon_Block, Wind_Dragon_SAtk };
         }
 
-        private void radEarth2_CheckedChanged(object sender, EventArgs e)
+        private void radEarth2_CheckedChanged(object sender, EventArgs e)// Set dragon data for Player 2 based on selection
         {
             p2Data[2] = Earth_Dragon_Name;
             p2Values = new int[] { Earth_Dragon_Health, Earth_Dragon_Atk, Earth_Dragon_Block, Earth_Dragon_SAtk };
@@ -127,11 +128,11 @@ namespace Dragon_Fighting_Game
         {
             if (player1Saved && player2Saved)
             {
-                Form2 form2 = new Form2(p1Data, p2Data, p1Values, p2Values);
-                form2.Show();
+                Form2 form2 = new Form2(p1Data, p2Data, p1Values, p2Values); // moves array over to form 2
+                form2.Show(); // this hides form 1 and shows form 2
                 this.Hide();
             }
-            else
+            else// this tells the user to please input the missing detail
             {
                 MessageBox.Show("Please make sure both players have saved their data.");
             }
@@ -140,7 +141,7 @@ namespace Dragon_Fighting_Game
             btnStart.Enabled = player1Saved && player2Saved;
         }
 
-        private void SaveValues1()
+        private void SaveValues1() // save method for player 1
         {
             string player1Name = txtPlayer1Name.Text;
             string dragon1Name = txtDragon1Name.Text;
@@ -148,12 +149,12 @@ namespace Dragon_Fighting_Game
             p1Data[0] = player1Name;
             p1Data[1] = dragon1Name;
 
-            if (!radFire1.Checked && !radIce1.Checked && !radEarth1.Checked && !radWind1.Checked)
+            if (!radFire1.Checked && !radIce1.Checked && !radEarth1.Checked && !radWind1.Checked)// this tells the user to please input the missing detail
             {
                 MessageBox.Show("Please Player 1 Select a Dragon");
                 return;
             }
-            if ((player1Name == "" && dragon1Name == "") || player1Name == "" || dragon1Name == "")
+            if ((player1Name == "" && dragon1Name == "") || player1Name == "" || dragon1Name == "")// this tells the user to please input the missing detail
             {
                 MessageBox.Show("Please Player 1 Enter The Missing Name");
                 return;
@@ -163,10 +164,10 @@ namespace Dragon_Fighting_Game
 
         }
 
-        private void SaveValues2()
+        private void SaveValues2() // save method for player 2
         {
-            string player2Name = txtPlayer2Name.Text; // Fixed typo: Changed txtPlayer1Name to txtPlayer2Name
-            string dragon2Name = txtDragon2Name.Text; // Fixed typo: Changed txtDragon1Name to txtDragon2Name
+            string player2Name = txtPlayer2Name.Text; 
+            string dragon2Name = txtDragon2Name.Text; 
 
             p2Data[0] = player2Name;
             p2Data[1] = dragon2Name;

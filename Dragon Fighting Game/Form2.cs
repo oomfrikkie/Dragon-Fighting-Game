@@ -12,132 +12,280 @@ namespace Dragon_Fighting_Game
 {
     public partial class Form2 : Form
     {
+       //declaring the crucial variables
         string[] p1Data2;
         string[] p2Data2;
         int[] p1Values2;
         int[] p2Values2;
-        Random random = new Random();
+       
         bool player1Blocking = false;
         bool player2Blocking = false;
-        int currentPlayer = 0;
+
+        int currentPlayer = 1;
+        int RoundCounter = 1;
+        string player1Action;
+        string player2Action;
+        Random random = new Random();
 
 
-        public Form2(string[] p1Data, string[] p2Data, int[] p1Values, int[] p2Values)
-        {
-
+        public Form2(string[] p1Data, string[] p2Data, int[] p1Values, int[] p2Values) //bringing arrays from form1
+        { 
             p1Data2 = p1Data;
             p2Data2 = p2Data;
             p1Values2 = p1Values;
             p2Values2 = p2Values;
-
+           
             InitializeComponent();
-            TakeInitiative();
-
+            
+            
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+          TakeInitiative();
+           
         }
 
-        private void lblDragonHp2_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         public int RandomRoll()
         {
+           
             return random.Next(1, 7);
         }
-        public int TakeInitiative() //determines whos going first for the round
+        public void TakeInitiative() //determines whos going first for the round
         {
 
-            int player1Roll;
-            int player2Roll;
-            while (true)
+            int player1Roll = RandomRoll();
+            int player2Roll = RandomRoll();
+            while (player1Roll == player2Roll)
             {
                 player1Roll = RandomRoll();
-                player2Roll = RandomRoll();
-                if (player1Roll != player2Roll)
-                    break;
-            }
+                player2Roll = RandomRoll(); // this uses the RandomRoll() to determine who goes first
 
-            currentPlayer = (player1Roll > player2Roll) ? 1 : 2;
-            return currentPlayer;
+            }
+            if ( player1Roll > player2Roll)
+            {
+                gbx5.Text = ($"{p1Data2[1]},  the {p1Data2[2]} turn ");
+                label1.Text = ($"HP: {p1Values2[0]}");
+                lblDragon1Hp.Text = ("HP" + p1Values2[0]);
+                currentPlayer = 1;
+            }
+            else if ( player1Roll < player2Roll)
+            {
+                gbx5.Text = ($"{p2Data2[1]},  the {p2Data2[2]} turn ");
+                label1.Text = ($"HP: {p2Values2[0]}");
+                lblDragon1Hp.Text = ("HP" + p2Values2[0]) ;
+                currentPlayer = 2;
+            }
+           
+            
+          
+       
+            
         }
-        private void SwitchTurn()
+        private void lblDragonHp2_Click(object sender, EventArgs e)
         {
-            currentPlayer = (currentPlayer == 1) ? 2 : 1;
 
         }
-        private void EndRound() // redoes the dice roll for the next round
-        {
-            TakeInitiative();
-        }
-        private void Attack()
-        {
-            int targetPlayer = (currentPlayer == 1) ? 2 : 1;
-            int PlayerAttack = (currentPlayer == 1) ? p1Values2[1] : p2Values2[1];
-            int playerBlock = (targetPlayer == 1) ? p1Values2[2] : p2Values2[2];
-            int damage = PlayerAttack;
+        private void SwitchTurn() // the method for switching between player turns
 
-            if (targetPlayer == 1 && player1Blocking) // if player 2 attacks and player 1 blocks
+        {
+
+            if (RoundCounter == 3)
             {
-                rtbBattleLog.AppendText($"\n{p2Data2[1]} attacked but {p1Data2[1]} blocked.\n -------------------------------------------------------");
-                // Refresh the RichTextBox to ensure the text is displayed immediately
-                rtbBattleLog.Refresh();
-                return;
-            }
-            else if (targetPlayer == 2 && player2Blocking) // if player 1 attacks and player 2 blocks
-            {
-                rtbBattleLog.AppendText($"\n{p1Data2[1]} attacked but {p2Data2[1]} blocked.\n -------------------------------------------------------");
-                // Refresh the RichTextBox to ensure the text is displayed immediately
-                rtbBattleLog.Refresh();
-                // Adjust damage based on opponent's block
-                damage = Math.Max(PlayerAttack - playerBlock, 0);
+                RoundCounter = 1;
+                currentPlayer = 1;
+                RandomRoll();
             }
 
-            // Apply damage to the target player
-            if (targetPlayer == 1)
-            {
-                p1Values2[0] -= damage;
-                rtbBattleLog.AppendText($"\n{p2Data2[1]} attacked {p1Data2[1]} for {damage} damage.\n -------------------------------------------------------");
-            }
-            else
-            {
-                p2Values2[0] -= damage;
-                rtbBattleLog.AppendText($"\n{p1Data2[1]} attacked {p2Data2[1]} for {damage} damage.\n -------------------------------------------------------");
-            }
 
             if (currentPlayer == 1)
             {
-                SwitchTurn();
+               
+                gbx5.Text = ($"{p1Data2[1]},  the {p1Data2[2]} turn ");
+                label1.Text = ($"HP: {p1Values2[0]}");
+                gbx6.Text = ("Opponent" + p2Data2[1]);
+                lblDragon1Hp.Text = ("HP" + p1Values2[0]);
+
+
             }
-            else
+            else if (currentPlayer == 2)
             {
-                EndRound();
+                
+                gbx5.Text = ($"{p2Data2[1]},  the {p2Data2[2]} turn ");
+                label1.Text = ($"HP: {p1Values2[0]}");
+                gbx6.Text = ("Opponent" + p1Data2[1]);
+                lblDragon1Hp.Text = ($"HP: {p2Values2[0]}");
+               
+
+            }
+            TakeInitiative();
+        }
+       
+        private void Attack()
+        {
+            int damage;
+            if (currentPlayer == 1)
+            {
+
+                if (player2Blocking == true)//if the opponent blocks
+                {
+                    player2Blocking = false;
+                    damage = p1Values2[1] - p2Values2[2];// working out damage subtracted by the block
+                    p2Values2[0] -= Math.Abs(damage);
+                    rtbBattleLog.Text += "\n" + p1Data2[1] + " attacked but " + p2Data2[1] + " blocked" + damage + "  damage was done ";
+                }
+                else
+                {
+                    p2Values2[0] -= p1Values2[1];
+                    
+                    
+                    rtbBattleLog.Text += "\n" + p1Data2[1] + " attacked for " + p1Values2[1];
+                }
+                
+            }
+            else if (currentPlayer == 2)
+            {
+
+                if (player1Blocking == true)//if the opponent blocks
+                {
+                    
+                    player1Blocking = false;
+                    damage = p2Values2[1] - p1Values2[2];// working out damage subtracted by the block
+                    p2Values2[0] -= Math.Abs(damage);
+                    rtbBattleLog.Text += "\n" + p2Data2[1] + " attacked but"+ p1Data2[1] + "blocked" + damage + "  damage was done ";
+
+                }
+                else
+                {
+                    p1Values2[0] -= p2Values2[1];
+                   
+                    player1Blocking = false;
+                }
+
+
+            }
+            
+
+
+        }
+        private void Block()
+        {
+            if (currentPlayer == 1) //if the opponent blocks
+            {
+                player1Blocking = true;
+                player2Blocking = false;
+
+            }
+            else if (currentPlayer == 2)
+            {
+                player2Blocking = true;
+                player1Blocking = false;
+               
+
+            }
+           
+
+
+        }
+        private void SAttack() // special attack funtionality
+        {
+            int damage;
+            if (currentPlayer == 1)
+            {
+
+                if (player2Blocking == true) //if the opponent blocks
+                {
+                    player2Blocking = false;
+                    damage = p1Values2[3] - p2Values2[2]; // working out damage subtracted by the block
+                    p2Values2[0] -= Math.Abs(damage);
+                    rtbBattleLog.Text += "\n" + p1Data2[1] + " used his special attack but " + p2Data2[1] + " blocked" + damage + "  damage was done ";
+                }
+                else
+                {
+                    p2Values2[0] -= p1Values2[3];
+
+
+                    rtbBattleLog.Text += "\n" + p1Data2[1] + "used his special attack for " + p1Values2[3];
+                }
+
+            }
+            else if (currentPlayer == 2)
+            {
+
+                if (player1Blocking == true)//if the opponent blocks
+                {
+                    player1Blocking = false;
+                    damage = p2Values2[1] - p1Values2[2];// working out damage subtracted by the block
+                    p2Values2[0] -= Math.Abs(damage);
+                    rtbBattleLog.Text += "\n" + p2Data2[1] + " attacked but " + p1Data2[1] + " blocked" + damage + "  damage was done ";
+
+                }
+                else
+                {
+                    p1Values2[0] -= p2Values2[1];
+
+                    player1Blocking = false;
+                    rtbBattleLog.Text += "\n" + p2Data2[1] + "used his special attack for " + p2Values2[3];
+
+
+
+                }
+
             }
         }
 
-
-        private void btnAtk_Click(object sender, EventArgs e)
+        private void btnAtk_Click_1(object sender, EventArgs e) // code for atk button
         {
             Attack();
+          
+            CheckDefeated();
+            SwitchTurn();
+            
+            RoundCounter++;
         }
 
-        private void CheckDefeated()
+       
+        private void btnBlock_Click(object sender, EventArgs e) // code for the block button
         {
-            if (p1Values2[0] == 0)
+            Block();
+            
+            CheckDefeated();
+            SwitchTurn(); 
+            
+            RoundCounter++;
+        }
+
+        private void btnSAtk_Click(object sender, EventArgs e) // code for the special attack button
+        {
+
+            SAttack();
+            
+            CheckDefeated();
+            SwitchTurn();
+            
+            RoundCounter++;
+        }
+
+      
+
+      
+        private void CheckDefeated()//here is where the victor is decided
+        {
+            if (p1Values2[0] <= 0)
             {
                 rtbBattleLog.Text = ("\n Player 1 Has been defeat . \n Player 2 Wins!!!! \n -------------------------------------------------------");
             }
-            else if (p2Values2[0] == 0)
+            else if (p2Values2[0] <= 0)
             {
                 rtbBattleLog.Text = ("\n Player 2 Has been defeat . \n Player 1 Wins!!!! \n -------------------------------------------------------");
             }
         }
+
+        private void gbx5_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-
-

@@ -35,6 +35,7 @@
             this.gbx7 = new System.Windows.Forms.GroupBox();
             this.rtbBattleLog = new System.Windows.Forms.RichTextBox();
             this.gbx5 = new System.Windows.Forms.GroupBox();
+            this.lblDragon1Hp = new System.Windows.Forms.Label();
             this.lblDragonHp1 = new System.Windows.Forms.Label();
             this.btnAtk = new System.Windows.Forms.Button();
             this.btnBlock = new System.Windows.Forms.Button();
@@ -97,7 +98,6 @@
             this.lblDragonHp2.Size = new System.Drawing.Size(46, 19);
             this.lblDragonHp2.TabIndex = 6;
             this.lblDragonHp2.Text = "HP: X";
-            this.lblDragonHp2.Click += new System.EventHandler(this.lblDragonHp2_Click);
             // 
             // gbx7
             // 
@@ -127,6 +127,7 @@
             // gbx5
             // 
             this.gbx5.BackColor = System.Drawing.Color.Transparent;
+            this.gbx5.Controls.Add(this.lblDragon1Hp);
             this.gbx5.Controls.Add(this.lblDragonHp1);
             this.gbx5.Controls.Add(this.btnAtk);
             this.gbx5.Controls.Add(this.btnBlock);
@@ -141,6 +142,16 @@
             this.gbx5.TabIndex = 6;
             this.gbx5.TabStop = false;
             this.gbx5.Text = "X , the X Dragon\'s turn";
+            this.gbx5.Enter += new System.EventHandler(this.gbx5_Enter);
+            // 
+            // lblDragon1Hp
+            // 
+            this.lblDragon1Hp.AutoSize = true;
+            this.lblDragon1Hp.Location = new System.Drawing.Point(30, 50);
+            this.lblDragon1Hp.Name = "lblDragon1Hp";
+            this.lblDragon1Hp.Size = new System.Drawing.Size(44, 15);
+            this.lblDragon1Hp.TabIndex = 6;
+            this.lblDragon1Hp.Text = "HP:";
             // 
             // lblDragonHp1
             // 
@@ -164,7 +175,7 @@
             this.btnAtk.TabIndex = 2;
             this.btnAtk.Text = "Attack";
             this.btnAtk.UseVisualStyleBackColor = false;
-            this.btnAtk.Click += new System.EventHandler(this.btnAtk_Click);
+            this.btnAtk.Click += new System.EventHandler(this.btnAtk_Click_1);
             // 
             // btnBlock
             // 
@@ -178,6 +189,7 @@
             this.btnBlock.TabIndex = 3;
             this.btnBlock.Text = "Block";
             this.btnBlock.UseVisualStyleBackColor = false;
+            this.btnBlock.Click += new System.EventHandler(this.btnBlock_Click);
             // 
             // btnSAtk
             // 
@@ -191,6 +203,7 @@
             this.btnSAtk.TabIndex = 4;
             this.btnSAtk.Text = "Speical Attack";
             this.btnSAtk.UseVisualStyleBackColor = false;
+            this.btnSAtk.Click += new System.EventHandler(this.btnSAtk_Click);
             // 
             // Form2
             // 
@@ -205,7 +218,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form2";
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.gbx6.ResumeLayout(false);
             this.gbx6.PerformLayout();
             this.gbx7.ResumeLayout(false);
@@ -228,5 +240,6 @@
         private System.Windows.Forms.Button btnAtk;
         private System.Windows.Forms.Button btnBlock;
         private System.Windows.Forms.Button btnSAtk;
+        private System.Windows.Forms.Label lblDragon1Hp;
     }
 }
