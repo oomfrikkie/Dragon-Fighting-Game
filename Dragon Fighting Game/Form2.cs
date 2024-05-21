@@ -25,9 +25,11 @@ namespace Dragon_Fighting_Game
 
         int currentPlayer = 0;
         int RoundCounter = 0;
-        string player1Action;
-        string player2Action;
+        
         Random random = new Random();
+        Random random1 = new Random();
+        bool player1Defeated = false;
+        bool player2Defeated = false;
 
             bool player1Special = false;
             bool player2Special = false;
@@ -39,6 +41,8 @@ namespace Dragon_Fighting_Game
             p1Values2 = p1Values;
             p2Values2 = p2Values;
             InitializeComponent();
+            btnRest.Visible = false;
+            btnRest.Enabled = false;
 
 
         }
@@ -55,11 +59,12 @@ namespace Dragon_Fighting_Game
         public int RandomRoll()
         {
 
-            return random.Next(1, 7);
+            return random.Next(1, 7); 
+            
         }
         public void TakeInitiative() //determines whos going first for the round
         {
-
+           
             int player1Roll = RandomRoll();
             int player2Roll = RandomRoll();
             while (player1Roll == player2Roll)
@@ -74,6 +79,18 @@ namespace Dragon_Fighting_Game
                 label1.Text = ($"HP: {p1Values2[0]}");
                 lblDragon1Hp.Text = ("HP" + p1Values2[0]);
                 currentPlayer = 1;
+                RoundCounter++;
+                if (player1Special == true)
+                {
+                    btnRest.Visible = true;
+                    btnRest.Enabled = true;
+
+                }
+                else
+                {
+                    btnRest.Visible = false;
+                    btnRest.Enabled = false;
+                }
             }
             else if (player1Roll < player2Roll)
             {
@@ -81,6 +98,17 @@ namespace Dragon_Fighting_Game
                 label1.Text = ($"HP: {p2Values2[0]}");
                 lblDragon1Hp.Text = ("HP" + p2Values2[0]);
                 currentPlayer = 2;
+                RoundCounter++;
+                if (player2Special == true)
+                {
+                    btnRest.Visible = true;
+                    btnRest.Enabled = true;
+                }
+                else
+                {
+                    btnRest.Visible = false;
+                    btnRest.Enabled = false;
+                }
             }
 
 
@@ -95,17 +123,31 @@ namespace Dragon_Fighting_Game
         private void SwitchTurn() // the method for switching between player turns
 
         {
+            if (RoundCounter == 2)
+            {
+                RoundCounter = 0;
+                TakeInitiative();
+            }
 
-
-
-            TakeInitiative();
             if (currentPlayer == 1)
             {
+
 
                 gbx5.Text = ($"{p1Data2[1]},  the {p1Data2[2]} turn ");
                 label1.Text = ($"HP: {p1Values2[0]}");
                 gbx6.Text = ("Opponent" + p2Data2[1]);
                 lblDragon1Hp.Text = ("HP" + p1Values2[0]);
+                if (player1Special == true)
+                {
+                    btnRest.Visible = true;
+                    btnRest.Enabled = true;
+                    
+                }
+                else
+                {
+                    btnRest.Visible = false;
+                    btnRest.Enabled = false;
+                }
 
 
             }
@@ -118,6 +160,21 @@ namespace Dragon_Fighting_Game
                 lblDragon1Hp.Text = ($"HP: {p2Values2[0]}");
 
 
+            }
+            else
+            {
+                btnRest.Visible = false;
+                btnRest.Enabled = false;
+            }
+            if (player2Special == true)
+            {
+                btnRest.Visible = true;
+                btnRest.Enabled = true;
+            }
+           else  if (player2Special == true)
+            {
+                btnRest.Visible = true;
+                btnRest.Enabled = true;
             }
         }
 
@@ -160,6 +217,7 @@ namespace Dragon_Fighting_Game
                     p1Values2[0] -= p2Values2[1];
 
                     player1Blocking = false;
+                    rtbBattleLog.Text += "\n" + p2Data2[1] + " attacked for " + p2Values2[1];
                 }
 
 
@@ -233,7 +291,7 @@ namespace Dragon_Fighting_Game
                     player2Special = true;
 
                 }
-                Rest();
+                
 
             }
         }
@@ -270,6 +328,15 @@ namespace Dragon_Fighting_Game
             RoundCounter++;
         }
 
+        private void btnRest_Click(object sender, EventArgs e)
+        {
+            Rest();
+            CheckDefeated();
+            SwitchTurn();
+
+            RoundCounter++;
+
+        }
 
 
 
@@ -277,12 +344,23 @@ namespace Dragon_Fighting_Game
         {
             if (p1Values2[0] <= 0)
             {
-                rtbBattleLog.Text = ("\n Player 1 Has been defeat . \n Player 2 Wins!!!! \n -------------------------------------------------------");
+                rtbBattleLog.Text = ($"\n {p1Data2[1]} Has been defeat . \n Player 2 Wins!!!! \n -------------------------------------------------------");
+                player1Defeated = true;
+                btnAtk.Enabled = false;
+                btnBlock.Enabled = false;
+                btnSAtk.Enabled = false;
+                btnRest.Enabled = false;
             }
             else if (p2Values2[0] <= 0)
             {
-                rtbBattleLog.Text = ("\n Player 2 Has been defeat . \n Player 1 Wins!!!! \n -------------------------------------------------------");
+                rtbBattleLog.Text = ($"\n {p2Data2[1]} Has been defeat . \n Player 1 Wins!!!! \n -------------------------------------------------------");
+                player2Defeated = true;
+                btnAtk.Enabled = false;
+                btnBlock.Enabled = false;
+                btnSAtk.Enabled = false;
+                btnRest.Enabled = false;
             }
+            
         }
 
         private void gbx5_Enter(object sender, EventArgs e)
@@ -291,30 +369,27 @@ namespace Dragon_Fighting_Game
         }
         private void RoundCount()
         {
-            if (RoundCounter == 2)
-            {
-                TakeInitiative();
-                RandomRoll();
-                RoundCounter = 0;
-            }
+            
 
         }
         private void Rest()
         {
-            if (player1Special == true)
+            if (currentPlayer == 1)
             {
-                if (currentPlayer == 1)
-                {
-                    btnRest.Show();
-                }
+                rtbBattleLog.Text = ($"{p1Data2[1]} Rested after his special");
+            btnRest.Visible = false;
+            btnRest.Enabled = false;
+                player1Special = false;
+               
             }
-            else if (player2Special== true)
+            else if (currentPlayer == 2)
             {
-                if (currentPlayer == 2)
-                {
-                    btnRest.Show();
-                }
+                rtbBattleLog.Text = ($"{p2Data2[1]} Rested after his special");
+                btnRest.Visible = false;
+                btnRest.Enabled = false;
+                player2Special = false;
             }
         }
+
     }
 }

@@ -48,13 +48,14 @@
             // 
             this.btnRest.Font = new System.Drawing.Font("Microsoft YaHei", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRest.ForeColor = System.Drawing.Color.Red;
-            this.btnRest.Location = new System.Drawing.Point(205, 87);
+            this.btnRest.Location = new System.Drawing.Point(26, 69);
             this.btnRest.Margin = new System.Windows.Forms.Padding(2);
             this.btnRest.Name = "btnRest";
             this.btnRest.Size = new System.Drawing.Size(122, 124);
             this.btnRest.TabIndex = 9;
             this.btnRest.Text = "Rest";
             this.btnRest.UseVisualStyleBackColor = true;
+            this.btnRest.Click += new System.EventHandler(this.btnRest_Click);
             // 
             // gbx6
             // 
@@ -113,6 +114,7 @@
             // gbx5
             // 
             this.gbx5.BackColor = System.Drawing.Color.Transparent;
+            this.gbx5.Controls.Add(this.btnRest);
             this.gbx5.Controls.Add(this.lblDragon1Hp);
             this.gbx5.Controls.Add(this.lblDragonHp1);
             this.gbx5.Controls.Add(this.btnAtk);
@@ -197,7 +199,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Dragon_Fighting_Game.Properties.Resources.dragon_battles_part_2;
             this.ClientSize = new System.Drawing.Size(600, 366);
-            this.Controls.Add(this.btnRest);
             this.Controls.Add(this.gbx6);
             this.Controls.Add(this.gbx7);
             this.Controls.Add(this.gbx5);
