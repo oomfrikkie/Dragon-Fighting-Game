@@ -43,14 +43,14 @@ namespace Dragon_Fighting_Game
             InitializeComponent();
             btnRest.Visible = false;
             btnRest.Enabled = false;
-
+            TakeInitiative();
 
         }
 
         //loading form 2
         private void Form2_Load(object sender, EventArgs e)
         {
-            TakeInitiative();
+            
 
         }
 
@@ -80,17 +80,7 @@ namespace Dragon_Fighting_Game
                 lblDragon1Hp.Text = ("HP" + p1Values2[0]);
                 currentPlayer = 1;
                 RoundCounter++;
-                if (player1Special == true)
-                {
-                    btnRest.Visible = true;
-                    btnRest.Enabled = true;
-
-                }
-                else
-                {
-                    btnRest.Visible = false;
-                    btnRest.Enabled = false;
-                }
+                
             }
             else if (player1Roll < player2Roll)
             {
@@ -99,16 +89,7 @@ namespace Dragon_Fighting_Game
                 lblDragon1Hp.Text = ("HP" + p2Values2[0]);
                 currentPlayer = 2;
                 RoundCounter++;
-                if (player2Special == true)
-                {
-                    btnRest.Visible = true;
-                    btnRest.Enabled = true;
-                }
-                else
-                {
-                    btnRest.Visible = false;
-                    btnRest.Enabled = false;
-                }
+                
             }
 
 
@@ -161,20 +142,16 @@ namespace Dragon_Fighting_Game
 
 
             }
-            else
-            {
-                btnRest.Visible = false;
-                btnRest.Enabled = false;
-            }
+            
             if (player2Special == true)
             {
                 btnRest.Visible = true;
                 btnRest.Enabled = true;
             }
-           else  if (player2Special == true)
+            else
             {
-                btnRest.Visible = true;
-                btnRest.Enabled = true;
+                btnRest.Visible = false;
+                btnRest.Enabled = false;
             }
         }
 
@@ -184,7 +161,7 @@ namespace Dragon_Fighting_Game
             if (currentPlayer == 1)
             {
 
-                if (player2Blocking == true)//if the opponent blocks
+                if (player2Blocking == true )//if the opponent blocks
                 {
                     player2Blocking = false;
                     damage = p1Values2[1] - p2Values2[2];// working out damage subtracted by the block
@@ -203,7 +180,7 @@ namespace Dragon_Fighting_Game
             else if (currentPlayer == 2)
             {
 
-                if (player1Blocking == true)//if the opponent blocks
+                if (player1Blocking == true )//if the opponent blocks
                 {
 
                     player1Blocking = false;
@@ -288,10 +265,10 @@ namespace Dragon_Fighting_Game
                     player1Blocking = false;
                     rtbBattleLog.Text += "\n" + p2Data2[1] + "used his special attack for " + p2Values2[3];
 
-                    player2Special = true;
+                    
 
                 }
-                
+                player2Special = true;
 
             }
         }
