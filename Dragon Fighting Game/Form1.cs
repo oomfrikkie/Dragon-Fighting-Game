@@ -61,9 +61,36 @@ namespace Dragon_Fighting_Game
         private void btnSave1_Click(object sender, EventArgs e) // save data for player 1
         {
             SaveValues1();
+            
 
 
 
+
+        }
+        private void SaveValues1() // save method for player 1
+        {
+            string player1Name = txtPlayer1Name.Text;
+            string dragon1Name = txtDragon1Name.Text;
+
+            p1Data[0] = player1Name;
+            p1Data[1] = dragon1Name;
+
+            if (!radFire1.Checked && !radIce1.Checked && !radEarth1.Checked && !radWind1.Checked)// this tells the user to please input the missing detail
+            {
+                MessageBox.Show("Please Player 1 Select a Dragon");
+                return;
+            }
+            if ((player1Name == "" && dragon1Name == "") || player1Name == "" || dragon1Name == "")// this tells the user to please input the missing detail
+            {
+                MessageBox.Show("Please Player 1 Enter The Missing Name");
+                return;
+            }
+            player1Saved = true;
+            btnStart.Enabled = player1Saved && player2Saved;
+            if (player1Saved == true) ;
+            {
+                btnSave1.Enabled = false;
+            }
 
         }
 
@@ -97,8 +124,36 @@ namespace Dragon_Fighting_Game
         {
             SaveValues2();
 
+            
 
 
+        }
+        
+
+        private void SaveValues2() // save method for player 2
+        {
+            string player2Name = txtPlayer2Name.Text;
+            string dragon2Name = txtDragon2Name.Text;
+
+            p2Data[0] = player2Name;
+            p2Data[1] = dragon2Name;
+
+            if (!radFire2.Checked && !radIce2.Checked && !radEarth2.Checked && !radWind2.Checked)
+            {
+                MessageBox.Show("Please Player 2 Select a Dragon");
+                return;
+            }
+            if ((player2Name == "" && dragon2Name == "") || player2Name == "" || dragon2Name == "")
+            {
+                MessageBox.Show("Please Player 2 Enter The Missing Name");
+                return;
+            }
+            player2Saved = true;
+            btnStart.Enabled = player1Saved && player2Saved;
+            if (player2Saved == true) ;
+            {
+                btnSave2.Enabled = false;
+            }
 
         }
 
@@ -142,53 +197,11 @@ namespace Dragon_Fighting_Game
 
             // Enable the button only if both players have saved their data
             btnStart.Enabled = player1Saved && player2Saved;
+            
+           
         }
 
-        private void SaveValues1() // save method for player 1
-        {
-            string player1Name = txtPlayer1Name.Text;
-            string dragon1Name = txtDragon1Name.Text;
-
-            p1Data[0] = player1Name;
-            p1Data[1] = dragon1Name;
-
-            if (!radFire1.Checked && !radIce1.Checked && !radEarth1.Checked && !radWind1.Checked)// this tells the user to please input the missing detail
-            {
-                MessageBox.Show("Please Player 1 Select a Dragon");
-                return;
-            }
-            if ((player1Name == "" && dragon1Name == "") || player1Name == "" || dragon1Name == "")// this tells the user to please input the missing detail
-            {
-                MessageBox.Show("Please Player 1 Enter The Missing Name");
-                return;
-            }
-            player1Saved = true;
-            btnStart.Enabled = player1Saved && player2Saved;
-
-        }
-
-        private void SaveValues2() // save method for player 2
-        {
-            string player2Name = txtPlayer2Name.Text; 
-            string dragon2Name = txtDragon2Name.Text; 
-
-            p2Data[0] = player2Name;
-            p2Data[1] = dragon2Name;
-
-            if (!radFire2.Checked && !radIce2.Checked && !radEarth2.Checked && !radWind2.Checked)
-            {
-                MessageBox.Show("Please Player 2 Select a Dragon");
-                return;
-            }
-            if ((player2Name == "" && dragon2Name == "") || player2Name == "" || dragon2Name == "")
-            {
-                MessageBox.Show("Please Player 2 Enter The Missing Name");
-                return;
-            }
-            player2Saved = true;
-            btnStart.Enabled = player1Saved && player2Saved;
-
-        }
+        
 
     }
 }

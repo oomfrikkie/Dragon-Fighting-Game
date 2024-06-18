@@ -35,7 +35,6 @@
             this.rtbBattleLog = new System.Windows.Forms.RichTextBox();
             this.gbx5 = new System.Windows.Forms.GroupBox();
             this.lblDragon1Hp = new System.Windows.Forms.Label();
-            this.lblDragonHp1 = new System.Windows.Forms.Label();
             this.btnAtk = new System.Windows.Forms.Button();
             this.btnBlock = new System.Windows.Forms.Button();
             this.btnSAtk = new System.Windows.Forms.Button();
@@ -87,6 +86,8 @@
             // 
             // gbx7
             // 
+            this.gbx7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbx7.BackColor = System.Drawing.Color.Transparent;
             this.gbx7.Controls.Add(this.rtbBattleLog);
             this.gbx7.Font = new System.Drawing.Font("Goudy Stout", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,7 +117,6 @@
             this.gbx5.BackColor = System.Drawing.Color.Transparent;
             this.gbx5.Controls.Add(this.btnRest);
             this.gbx5.Controls.Add(this.lblDragon1Hp);
-            this.gbx5.Controls.Add(this.lblDragonHp1);
             this.gbx5.Controls.Add(this.btnAtk);
             this.gbx5.Controls.Add(this.btnBlock);
             this.gbx5.Controls.Add(this.btnSAtk);
@@ -140,16 +140,6 @@
             this.lblDragon1Hp.Size = new System.Drawing.Size(44, 15);
             this.lblDragon1Hp.TabIndex = 6;
             this.lblDragon1Hp.Text = "HP:";
-            // 
-            // lblDragonHp1
-            // 
-            this.lblDragonHp1.AutoSize = true;
-            this.lblDragonHp1.Location = new System.Drawing.Point(35, 30);
-            this.lblDragonHp1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDragonHp1.Name = "lblDragonHp1";
-            this.lblDragonHp1.Size = new System.Drawing.Size(66, 15);
-            this.lblDragonHp1.TabIndex = 5;
-            this.lblDragonHp1.Text = "HP: X";
             // 
             // btnAtk
             // 
@@ -198,7 +188,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Dragon_Fighting_Game.Properties.Resources.dragon_battles_part_2;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(734, 420);
             this.Controls.Add(this.gbx6);
             this.Controls.Add(this.gbx7);
             this.Controls.Add(this.gbx5);
@@ -222,7 +212,6 @@
         private System.Windows.Forms.GroupBox gbx7;
         private System.Windows.Forms.RichTextBox rtbBattleLog;
         private System.Windows.Forms.GroupBox gbx5;
-        private System.Windows.Forms.Label lblDragonHp1;
         private System.Windows.Forms.Button btnAtk;
         private System.Windows.Forms.Button btnBlock;
         private System.Windows.Forms.Button btnSAtk;
